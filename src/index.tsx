@@ -42,13 +42,13 @@ export function injectServices<P = {}, RP extends Dict = Dict>(
 ) {
   if (typeof fn === 'object') {
     const dict = fn;
-    fn = (container: ContainerInterface) => {
-      const props: Dict = {};
+    fn = (container: ContainerInterface, props: Dict) => {
+      const newProps: Dict = {};
       Object.keys(dict).forEach(key => {
-        props[key] = container.get(dict[key]);
+        newProps[key] = (props && props[key]) || container.get(dict[key]);
       });
 
-      return props as RP;
+      return newProps as RP;
     };
   }
 
