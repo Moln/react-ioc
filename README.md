@@ -1,9 +1,9 @@
 # React IoC helper
 
-[![Build Status](https://travis-ci.org/Moln/react-ioc.svg?branch=master)](https://travis-ci.org/Moln/react-ioc) 
+[![Build Status](https://github.com/Moln/react-ioc/workflows/CI/badge.svg)](https://github.com/Moln/react-ioc) 
 [![Coverage Status](https://coveralls.io/repos/github/Moln/react-ioc/badge.svg?branch=master)](https://coveralls.io/github/Moln/react-ioc?branch=master)
 [![GitHub license](https://img.shields.io/github/license/Moln/react-ioc)](https://github.com/Moln/react-ioc)
-[![npm](https://img.shields.io/npm/v/@Moln/react-ioc.svg)](https://www.npmjs.com/@Moln/react-ioc)
+[![npm](https://img.shields.io/npm/v/@moln/react-ioc.svg)](https://www.npmjs.com/@moln/react-ioc)
 
 Use any ioc library (tsyringe, inversify, @Moln/react-ioc, etc.) in react.
 
