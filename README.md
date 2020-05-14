@@ -9,8 +9,8 @@ Use any ioc library (tsyringe, inversify, @Moln/react-ioc, etc.) in react.
 
 - [Installation](#installation)
 - [API](#api)
-  - [DependencyContainerContext & DependencyContainerProvider](#dependencycontainercontext-dependencycontainerprovider)
-    - [Use `@moln/dependency-container`](#use-moln-dependency-container)
+  - [DependencyContainerContext & DependencyContainerProvider](#dependencycontainercontext--dependencycontainerprovider)
+    - [Use `@moln/dependency-container`](#use-molndependency-container)
     - [Use `tsyringe`](#use-tsyringe)
     - [Use `inversify`](#use-inversify)
   - [injectServices HOC](#injectservices-hoc)
@@ -53,7 +53,7 @@ render(
 );
 ```
 
-#### Use [`tsyringe`](https://www.npmjs.com/package/tsyringe).
+#### Use [`tsyringe`](https://www.npmjs.com/package/tsyringe)
 
 ```typescript
 import {container, injectable} from "tsyringe";
