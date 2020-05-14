@@ -2,7 +2,7 @@
   "name": "@moln/react-ioc",
   "description": "Use any ioc library (tsyringe, inversify, @moln/dependency-container, etc.) in react.",
   "author": "Moln",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
