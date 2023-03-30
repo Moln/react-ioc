@@ -7,6 +7,7 @@ import React, {
   RefAttributes,
   useContext,
   Component,
+  PropsWithChildren,
 } from 'react';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
@@ -37,9 +38,10 @@ type PropsFactory<P, RP extends Dict> = (
   nextProps: P
 ) => RP;
 
-export function injectServices<P = {}, RP extends Dict = Dict>(
-  fn: PropsFactory<P, RP> | { [key in keyof RP]: InjectionToken<any> }
-) {
+export function injectServices<
+  P extends Record<any, any> = {},
+  RP extends Dict = Dict
+>(fn: PropsFactory<P, RP> | { [key in keyof RP]: InjectionToken<any> }) {
   if (typeof fn === 'object') {
     const dict = fn;
     fn = (container: ContainerInterface, props: Dict) => {
@@ -53,7 +55,7 @@ export function injectServices<P = {}, RP extends Dict = Dict>(
   }
 
   return <
-    T extends ComponentType<any>,
+    T extends ComponentType<P>,
     WOP = WithOptional<ComponentProps<T>, keyof RP>
   >( //WOP = WithOptional<ComponentProps<T>, keyof RP>
     component: T
@@ -72,10 +74,7 @@ export function injectServices<P = {}, RP extends Dict = Dict>(
         newProps.ref = ref;
       }
 
-      Object.assign(
-        newProps,
-        (fn as PropsFactory<ComponentProps<T>, RP>)(container, newProps)
-      );
+      Object.assign(newProps, (fn as PropsFactory<P, RP>)(container, newProps));
 
       return React.createElement(component, newProps);
     });
@@ -93,9 +92,11 @@ export function injectServices<P = {}, RP extends Dict = Dict>(
   };
 }
 
-export class DependencyContainerProvider extends PureComponent<{
-  container: ContainerInterface;
-}> {
+export class DependencyContainerProvider extends PureComponent<
+  PropsWithChildren<{
+    container: ContainerInterface;
+  }>
+> {
   render() {
     const { children, container } = this.props;
     return (
